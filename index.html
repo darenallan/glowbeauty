@@ -1,0 +1,428 @@
+<!doctype html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Glow Beauty — Audrey, Makeup Artist</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://api.fontshare.com/v2/css?f[]=cabinet-grotesk@100,300,400,500,700,800,900&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400;1,600&display=swap" rel="stylesheet" />
+  <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js" defer></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js" defer></script>
+</head>
+<body>
+
+  <!-- CURSOR (desktop only — hidden via CSS on touch) -->
+  <div class="cursor" id="cursor"><div class="cursor-inner"></div></div>
+
+  <!-- LOADER -->
+  <div class="loader" id="loader">
+    <div class="loader-progress"><div class="loader-bar" id="loader-bar"></div></div>
+    <div class="loader-counter" id="loader-counter">0</div>
+    <div class="loader-brand">
+      <span class="loader-brand-main">GLOW</span>
+      <span class="loader-brand-sub">BEAUTY</span>
+    </div>
+  </div>
+
+  <!-- NAV -->
+  <nav id="nav">
+    <a href="#" class="nav-logo">
+      <div class="nav-logo-orb">
+        <img src="static/logo.jpeg" alt="Logo Glow Beauty" />
+      </div>
+      <span>Glow <em>Beauty</em></span>
+    </a>
+    <div class="nav-links">
+      <a href="#apropos">À propos</a>
+      <a href="#showcase">Portfolio</a>
+      <a href="#booking">Réserver</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <a href="#booking" class="nav-cta">Réserver</a>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero" id="hero">
+    <div class="hero-bg">
+      <img src="static/4ever.jpeg" alt="Audrey Makeup Artist" class="hero-img" id="hero-img" />
+      <div class="hero-gradient"></div>
+    </div>
+    <div class="hero-content">
+      <div class="hero-label">
+        <span class="dot"></span>
+        <span>Makeup Artist · Montreal</span>
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line" data-line="1"><em>Make</em>up</span>
+        <span class="title-line title-line--right" data-line="2">Is My</span>
+        <span class="title-line" data-line="3"><em>Art</em></span>
+      </h1>
+      <div class="hero-bottom">
+        <p class="hero-tagline">Laissez parler votre beauté naturelle</p>
+        <a href="#booking" class="hero-cta-btn">
+          <span>Réserver mon essai</span>
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </a>
+      </div>
+    </div>
+    <div class="hero-stats">
+      <div class="stat"><span class="stat-num">+200</span><span class="stat-label">Clientes</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">5+</span><span class="stat-label">Années</span></div>
+      <div class="stat-divider"></div>
+      <div class="stat"><span class="stat-num">100%</span><span class="stat-label">Satisfaction</span></div>
+    </div>
+  </section>
+
+  <!-- MARQUEE STRIP -->
+  <div class="marquee-strip" aria-hidden="true">
+    <div class="marquee-track">
+      <span>Maquillage Nuptial</span><span class="sep">◆</span>
+      <span>Shooting Editorial</span><span class="sep">◆</span>
+      <span>Soirée Glamour</span><span class="sep">◆</span>
+      <span>Smokey Eyes</span><span class="sep">◆</span>
+      <span>Nude &amp; Naturel</span><span class="sep">◆</span>
+      <span>Maquillage Nuptial</span><span class="sep">◆</span>
+      <span>Shooting Editorial</span><span class="sep">◆</span>
+      <span>Soirée Glamour</span><span class="sep">◆</span>
+      <span>Smokey Eyes</span><span class="sep">◆</span>
+      <span>Nude &amp; Naturel</span><span class="sep">◆</span>
+    </div>
+  </div>
+
+  <!-- PANELS -->
+  <section class="panels-section">
+    <div class="panel" data-index="01">
+      <div class="panel-media">
+        <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Look naturel" loading="lazy" />
+      </div>
+      <div class="panel-content"><span class="panel-num">01</span><h2>Définissez</h2><p>Votre look</p></div>
+    </div>
+    <div class="panel" data-index="02">
+      <div class="panel-media">
+        <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Look ombré" loading="lazy" />
+      </div>
+      <div class="panel-content"><span class="panel-num">02</span><h2>Ombre</h2><p>Pour tous les tons</p></div>
+    </div>
+    <div class="panel" data-index="03">
+      <div class="panel-media">
+        <img src="https://images.unsplash.com/photo-1516975080664-ed2fc6a32937?ixlib=rb-1.2.1&auto=format&fit=crop&w=800&q=80" alt="Sélection" loading="lazy" />
+      </div>
+      <div class="panel-content"><span class="panel-num">03</span><h2>Explorez</h2><p>Notre sélection</p></div>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section class="about-section" id="apropos">
+    <div class="about-left">
+      <div class="about-img-wrapper">
+        <div class="about-img-frame">
+          <video src="static/apropos.mp4" autoplay muted loop playsinline class="about-video"></video>
+        </div>
+        <div class="about-img-badge"><span>Artiste</span><em>Maquilleuse</em></div>
+      </div>
+    </div>
+    <div class="about-right">
+      <div class="about-label"><span class="dot"></span><span>À propos</span></div>
+      <h2 class="about-title">Moi, <em>Audrey</em>,<br />votre artiste</h2>
+      <div class="about-body">
+        <p>Passionnée par l'art du maquillage depuis mon plus jeune âge, j'ai transformé ma passion en une carrière dédiée à révéler la beauté unique de chaque individu.</p>
+        <p>Avec une expertise allant du maquillage de mariage au maquillage artistique, je m'engage à créer des looks qui subliment votre apparence et racontent votre histoire.</p>
+        <p>Mon objectif est de vous faire sentir confiant(e) et radieux(se) chaque fois que vous regardez dans le miroir.</p>
+      </div>
+      <a href="#booking" class="btn-outline">
+        <span>Prendre rendez-vous</span>
+        <div class="btn-arrow">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <!-- QUOTE DIVIDER -->
+  <div class="quote-divider">
+    <blockquote><em>"La beauté commence au moment où vous décidez d'être vous-même."</em></blockquote>
+  </div>
+
+  <!-- SHOWCASE / PORTFOLIO -->
+  <section class="showcase-section" id="showcase">
+    <div class="showcase-header">
+      <div class="showcase-label"><span class="dot"></span><span>Portfolio</span></div>
+      <h2 class="showcase-title">Nos Looks <em>Signature</em></h2>
+      <p class="showcase-sub">Parcourez nos collections conçues pour correspondre à votre humeur.</p>
+    </div>
+
+    <div class="filter-tabs">
+      <button class="tab-btn active" data-category="nude">Nude &amp; Naturel</button>
+      <button class="tab-btn" data-category="glamour">Glamour</button>
+      <button class="tab-btn" data-category="smokey">Smokey</button>
+    </div>
+
+    <div class="portfolio-grid" id="portfolio-grid"></div>
+
+    <!-- AVANT / APRÈS SLIDER -->
+    <div class="before-after-wrapper">
+      <div class="before-after-label"><span class="dot"></span><span>Avant / Après</span></div>
+      <h3 class="before-after-title">La transformation <em>en action</em></h3>
+      <div class="ba-slider-container" id="ba-slider">
+        <div class="ba-after">
+          <img src="https://images.unsplash.com/photo-1487412720507-e7ab37603c6f?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Après maquillage" />
+          <span class="ba-label ba-label--right">Après</span>
+        </div>
+        <div class="ba-before" id="ba-before">
+          <img src="https://images.unsplash.com/photo-1512496015851-a90fb38ba796?ixlib=rb-1.2.1&auto=format&fit=crop&w=900&q=80" alt="Avant maquillage" />
+          <span class="ba-label ba-label--left">Avant</span>
+        </div>
+        <div class="ba-handle" id="ba-handle">
+          <div class="ba-handle-line"></div>
+          <div class="ba-handle-circle">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6"/></svg>
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6"/></svg>
+          </div>
+          <div class="ba-handle-line"></div>
+        </div>
+      </div>
+      <p class="ba-hint">← Faites glisser le curseur →</p>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section class="services-section">
+    <div class="services-label"><span class="dot"></span><span>Prestations</span></div>
+    <div class="services-list">
+      <div class="service-item">
+        <span class="service-num">01</span>
+        <div class="service-body"><h3>Mariage</h3><p>Essai + Jour J — sublimez votre plus beau jour avec une élégance intemporelle.</p></div>
+        <span class="service-tag">Premium</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">02</span>
+        <div class="service-body"><h3>Soirée Glamour</h3><p>Pour toutes vos occasions spéciales — de l'éclat et de la sophistication.</p></div>
+        <span class="service-tag">Populaire</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">03</span>
+        <div class="service-body"><h3>Shooting Editorial</h3><p>Maquillage professionnel pour vos shootings photo et productions vidéo.</p></div>
+        <span class="service-tag">Sur devis</span>
+      </div>
+      <div class="service-item">
+        <span class="service-num">04</span>
+        <div class="service-body"><h3>Formation</h3><p>Apprenez les techniques professionnelles lors d'ateliers personnalisés.</p></div>
+        <span class="service-tag">Nouveau</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== BOOKING SECTION ===== -->
+  <section class="booking-section" id="booking">
+    <div class="booking-inner">
+      <div class="booking-header">
+        <div class="about-label"><span class="dot"></span><span>Réservation</span></div>
+        <h2 class="booking-title">Votre <em>Transformation</em><br />Commence Ici</h2>
+        <p class="booking-sub">Choisissez votre prestation et proposez une date — je vous confirme sous 24h.</p>
+      </div>
+
+      <!-- STEP INDICATORS -->
+      <div class="booking-steps">
+        <div class="step-dot active" data-step="1"><span>1</span><em>Service</em></div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="2"><span>2</span><em>Date</em></div>
+        <div class="step-line"></div>
+        <div class="step-dot" data-step="3"><span>3</span><em>Vous</em></div>
+      </div>
+
+      <form class="booking-form" id="booking-form" novalidate>
+
+        <!-- STEP 1 — SERVICE -->
+        <div class="booking-step" data-panel="1">
+          <h3>Quelle prestation souhaitez-vous ?</h3>
+          <div class="service-cards">
+            <label class="service-card">
+              <input type="radio" name="service" value="Mariage" required />
+              <div class="service-card-inner">
+                <i class="ri-heart-line"></i>
+                <strong>Mariage</strong>
+                <span>Essai inclus</span>
+              </div>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Soirée" />
+              <div class="service-card-inner">
+                <i class="ri-star-line"></i>
+                <strong>Soirée</strong>
+                <span>Événement spécial</span>
+              </div>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Editorial" />
+              <div class="service-card-inner">
+                <i class="ri-camera-line"></i>
+                <strong>Éditorial</strong>
+                <span>Shooting / Vidéo</span>
+              </div>
+            </label>
+            <label class="service-card">
+              <input type="radio" name="service" value="Formation" />
+              <div class="service-card-inner">
+                <i class="ri-book-open-line"></i>
+                <strong>Formation</strong>
+                <span>Atelier privé</span>
+              </div>
+            </label>
+          </div>
+          <button type="button" class="booking-next" id="step1-next">Continuer <i class="ri-arrow-right-line"></i></button>
+        </div>
+
+        <!-- STEP 2 — DATE -->
+        <div class="booking-step hidden" data-panel="2">
+          <h3>Quand seriez-vous disponible ?</h3>
+
+          <!-- Calendly embed zone — swap with real link -->
+          <div class="calendly-zone">
+            <div class="calendly-placeholder" id="calendly-placeholder">
+              <i class="ri-calendar-2-line"></i>
+              <p>Intégrez ici votre lien <strong>Calendly</strong> ou <strong>Cal.com</strong></p>
+              <code>https://calendly.com/audrey-glowbeauty</code>
+              <small>Remplacez l'URL dans le script puis décommentez le widget.</small>
+            </div>
+            <!-- Décommentez ci-dessous une fois votre compte Calendly créé :
+            <div class="calendly-inline-widget"
+                 data-url="https://calendly.com/audrey-glowbeauty?hide_landing_page_details=1&hide_gdpr_banner=1&primary_color=c4855a"
+                 style="min-width:280px;height:630px;"></div>
+            <script type="text/javascript" src="https://assets.calendly.com/assets/external/widget.js" async></script>
+            -->
+          </div>
+
+          <!-- Fallback date input if no Calendly yet -->
+          <div class="date-fallback" id="date-fallback">
+            <div class="form-field">
+              <label>Date souhaitée</label>
+              <input type="date" name="date" id="booking-date" min="" />
+            </div>
+            <div class="form-field">
+              <label>Créneau préféré</label>
+              <select name="slot">
+                <option value="">Choisir un créneau</option>
+                <option>Matin (9h – 12h)</option>
+                <option>Après-midi (13h – 17h)</option>
+                <option>Soir (17h – 20h)</option>
+              </select>
+            </div>
+          </div>
+
+          <div class="step-nav">
+            <button type="button" class="booking-back" id="step2-back"><i class="ri-arrow-left-line"></i> Retour</button>
+            <button type="button" class="booking-next" id="step2-next">Continuer <i class="ri-arrow-right-line"></i></button>
+          </div>
+        </div>
+
+        <!-- STEP 3 — COORDONNÉES -->
+        <div class="booking-step hidden" data-panel="3">
+          <h3>Vos coordonnées</h3>
+          <div class="form-grid">
+            <div class="form-field">
+              <label>Prénom &amp; Nom</label>
+              <input type="text" name="name" placeholder="Fatima El Fassi" required />
+            </div>
+            <div class="form-field">
+              <label>Téléphone (WhatsApp de préférence)</label>
+              <input type="tel" name="phone" placeholder="+212 6XX XXX XXX" required />
+            </div>
+            <div class="form-field full">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="fatima@exemple.com" required />
+            </div>
+            <div class="form-field full">
+              <label>Message (optionnel)</label>
+              <textarea name="message" rows="3" placeholder="Détails sur votre look, inspiration…"></textarea>
+            </div>
+          </div>
+          <div class="step-nav">
+            <button type="button" class="booking-back" id="step3-back"><i class="ri-arrow-left-line"></i> Retour</button>
+            <button type="submit" class="submit-btn">
+              <span>Envoyer ma demande</span>
+              <div class="submit-icon">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+              </div>
+            </button>
+          </div>
+        </div>
+
+        <!-- SUCCESS -->
+        <div class="booking-success hidden" id="booking-success">
+          <div class="success-icon"><i class="ri-check-line"></i></div>
+          <h3>Demande envoyée !</h3>
+          <p>Audrey vous recontacte sous 24h pour confirmer votre rendez-vous. À très bientôt ✨</p>
+        </div>
+
+      </form>
+    </div>
+  </section>
+
+  <!-- CONTACT INFO + SOCIALS -->
+  <section class="contact-section" id="contact">
+    <div class="contact-glow"></div>
+    <div class="contact-wrapper">
+      <div class="contact-left">
+        <div class="contact-label"><span class="dot"></span><span>Contact</span></div>
+        <h2 class="contact-title">Restons<br /><em>Connectées</em></h2>
+        <p class="contact-sub">Retrouvez-moi sur mes réseaux pour suivre mes créations au quotidien.</p>
+        <div class="contact-socials">
+          <a href="https://www.instagram.com/p_audrey01?igsh=MWs2dDE4ODFzNWNlNg==" target="_blank" rel="noopener" class="social-pill">
+            <i class="ri-instagram-line"></i> Instagram
+          </a>
+          <a href="https://www.tiktok.com/@p_audrey01?_r=1&_t=ZS-93l1cmIBK8D" target="_blank" rel="noopener" class="social-pill">
+            <i class="ri-tiktok-fill"></i> TikTok
+          </a>
+          <a href="https://www.snapchat.com/add/p_audrey01" target="_blank" rel="noopener" class="social-pill">
+            <i class="ri-snapchat-line"></i> Snapchat
+          </a>
+        </div>
+      </div>
+      <div class="contact-right">
+        <div class="contact-info-card">
+          <div class="info-row"><i class="ri-map-pin-line"></i><div><strong>Montreal</strong><span>Déplacements possibles sur Montreal et environs</span></div></div>
+          <div class="info-row"><i class="ri-time-line"></i><div><strong>Disponibilités</strong><span>Lundi → Samedi · 9h – 20h</span></div></div>
+          <div class="info-row"><i class="ri-whatsapp-line"></i><div><strong>WhatsApp</strong><span>Réponse rapide garantie</span></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div class="footer-brand">
+        <h2>GLOW <em>BEAUTY</em></h2>
+        <span>by Audrey</span>
+      </div>
+      <!--<nav class="footer-nav">
+        <a href="#apropos">À propos</a>
+        <a href="#showcase">Portfolio</a>
+        <a href="#booking">Réserver</a>
+        <a href="#contact">Contact</a>
+      </nav>-->
+    </div>
+    <div class="footer-bottom">
+      <p>© 2026 Glow Beauty by Audrey. Tous droits réservés.</p>
+      <div class="footer-socials">
+        <a href="https://www.instagram.com/p_audrey01?igsh=MWs2dDE4ODFzNWNlNg==" target="_blank" rel="noopener"><i class="ri-instagram-line"></i></a>
+        <a href="https://www.tiktok.com/@p_audrey01" target="_blank" rel="noopener"><i class="ri-tiktok-fill"></i></a>
+        <a href="https://www.snapchat.com/add/p_audrey01" target="_blank" rel="noopener"><i class="ri-snapchat-line"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- STICKY MOBILE CTA -->
+  <div class="sticky-cta" id="sticky-cta" aria-hidden="true">
+    <a href="#booking" class="sticky-cta-btn">
+      <i class="ri-calendar-check-line"></i>
+      <span>Réserver mon essai</span>
+    </a>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
