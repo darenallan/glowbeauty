@@ -3,6 +3,8 @@
    Optimisé mobile : cursor/parallax/grain désactivés
    sur pointer:coarse via JS (doublure du CSS)
    ===================================================== */
+import { db } from './firebase-config.js';
+import { collection, getDocs, query, orderBy } from "https://www.gstatic.com/firebasejs/10.8.1/firebase-firestore.js";
 
 // ─── DETECT TOUCH ──────────────────────────────────
 const isTouchDevice = window.matchMedia('(pointer: coarse)').matches;
@@ -105,26 +107,38 @@ function setupReveal() {
 }
 
 // ─── 7. PORTFOLIO ──────────────────────────────────
-const portfolioData = {
-  nude: [
-    { type: 'image', src: 'static/moiArr.jpeg',  title: 'Soft Morning Glow', desc: 'Natural Skin Finish' },
-    { type: 'image', src: 'static/moiRobe.jpeg', title: 'Bridal Nude',       desc: 'Wedding Perfection'  },
-    { type: 'video', src: 'static/flex2.mp4',    title: 'Fresh Face',        desc: 'Video Tutorial'      }
-  ],
-  glamour: [
-    { type: 'image', src: 'static/nous2.jpeg',   title: 'Red Carpet Ready',  desc: 'Highlighter Focus'   },
-    { type: 'video', src: 'static/chaperon.mp4', title: 'Lip Precision',     desc: 'Behind the Scenes'   },
-    { type: 'image', src: 'static/jupeW.jpeg',   title: 'Golden Hour',       desc: 'Editorial Shoot'     }
-  ],
-  smokey: [
-    { type: 'image', src: 'static/mes3.jpeg',    title: 'Midnight Blue',     desc: 'Intense Eyes'        },
-    { type: 'image', src: 'static/4tete.jpeg',   title: 'Grunge Chic',       desc: 'Matte Finish'        },
-    { type: 'video', src: 'static/flex1.mp4',    title: 'Classic Black',     desc: 'Smokey Cat Eye'      }
-  ]
+let portfolioData = {
+  nude: [],
+  glamour: [],
+  smokey: []
 };
 
 const grid = document.getElementById('portfolio-grid');
 const tabs = document.querySelectorAll('.tab-btn');
+
+async function fetchPortfolio() {
+  try {
+    const q = query(collection(db, "portfolio"), orderBy("createdAt", "desc"));
+    const querySnapshot = await getDocs(q);
+    
+    // Reset data
+    portfolioData = { nude: [], glamour: [], smokey: [] };
+    
+    querySnapshot.forEach((docSnap) => {
+      const data = docSnap.data();
+      if (portfolioData[data.category]) {
+        portfolioData[data.category].push({
+          type: data.type,
+          src: data.src,
+          title: data.title,
+          desc: data.desc
+        });
+      }
+    });
+  } catch (error) {
+    console.error("Erreur de récupération du portfolio:", error);
+  }
+}
 
 function displayCategory(category) {
   const existing = grid.querySelectorAll('.look-card');
@@ -132,12 +146,19 @@ function displayCategory(category) {
 
   setTimeout(() => {
     grid.innerHTML = '';
+
+    if (!portfolioData[category] || portfolioData[category].length === 0) {
+      grid.innerHTML = '<p style="grid-column: 1 / -1; text-align: center; color: var(--brown-mid); padding: 40px; font-style: italic;">Aucun look dans cette catégorie pour le moment.</p>';
+      return;
+    }
+
     portfolioData[category].forEach((item, i) => {
       const card = document.createElement('div');
       card.className = 'look-card';
       card.style.cssText = `opacity:0; transform:translateY(24px); transition:opacity 0.45s ease ${i * 0.1}s, transform 0.45s ease ${i * 0.1}s`;
 
       const isVideo = item.type === 'video';
+
       const mediaEl = isVideo
         ? `<video src="${item.src}" muted loop playsinline
               onmouseenter="this.play()" onmouseleave="this.pause();this.currentTime=0"></video>`
@@ -279,8 +300,9 @@ if (marqueeTrack) {
 }
 
 // ─── 11. GSAP ANIMATIONS ──────────────────────────
-function startAnimations() {
+async function startAnimations() {
   setupReveal();
+  await fetchPortfolio();
   displayCategory('nude');
 
   if (typeof gsap === 'undefined') return;
